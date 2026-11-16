@@ -19,7 +19,7 @@ public class ShopSphereUserDetails implements UserDetails {
         this.userId = userId;
         this.email = email;
         this.password = password;
-        this.authorities = authorities;
+        this.authorities = List.copyOf(authorities);
         this.enabled = enabled;
     }
 

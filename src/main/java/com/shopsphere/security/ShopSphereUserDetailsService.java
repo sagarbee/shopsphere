@@ -5,9 +5,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ShopSphereUserDetailsService implements UserDetailsService {
 
     private final PasswordEncoder passwordEncoder;
@@ -21,9 +23,14 @@ public class ShopSphereUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        if(!"sagar@mail.com".equalsIgnoreCase(email)){
-            throw new UsernameNotFoundException("User not found: "+ email);
+        if("sagar@mail.com".equalsIgnoreCase(email)){
+            return new ShopSphereUserDetails(1L,"sagar@mail.com",encodedPassword,
+                    List.of(new SimpleGrantedAuthority("ROLE_CUSTOMER"),new SimpleGrantedAuthority("PRODUCT_READ")),true);
         }
-        return new ShopSphereUserDetails(1L,"sagar@mail.com",encodedPassword, List.of(new SimpleGrantedAuthority("ROLE_CUSTOMER")),true);
+        if("admin@mail.com".equalsIgnoreCase(email)){
+            return new ShopSphereUserDetails(2L,"admin@mail.com",encodedPassword,
+                    List.of(new SimpleGrantedAuthority("ROLE_ADMIN")),true);
+        }
+        throw new UsernameNotFoundException("User Not found: "+ email);
     }
 }
