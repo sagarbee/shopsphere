@@ -25,7 +25,7 @@ public class AuthService {
                 new UsernamePasswordAuthenticationToken(loginRequest.email(),loginRequest.password())
         );
 
-        String token = jwtService.generateToken(authentication.getName());
+        String token = jwtService.generateToken(authentication.getName(),authentication.getAuthorities());
         return new LoginResponse(token,"Bearer");
 
     }
