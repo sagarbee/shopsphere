@@ -9,6 +9,13 @@ import java.util.Set;
 @Entity
 @Table(name = "users")
 public class ShopUser {
+
+    protected ShopUser(){}
+    public ShopUser(String email,String password){
+        this.email = email;
+        this.password = password;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -33,7 +40,7 @@ public class ShopUser {
     )
     private Set<Role> roles = new HashSet<>();
 
-    protected ShopUser(){}
+
 
     @PrePersist
     protected void onCreate(){
