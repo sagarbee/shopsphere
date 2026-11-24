@@ -15,6 +15,7 @@ public class SecurityTestController {
         this.productService = productService;
     }
 
+/*
     @GetMapping("/create-product")
     public String createProduct() {
         return productService.createProduct();
@@ -24,5 +25,6 @@ public class SecurityTestController {
     public String viewProducts() {
         return productService.viewProducts();
     }
+*/
 
 }

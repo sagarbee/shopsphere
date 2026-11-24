@@ -38,6 +38,21 @@ public class Product {
         this.stockQuantity = stockQuantity;
     }
 
+    public void updateDetails(
+            String name,
+            String description,
+            BigDecimal price,
+            Integer stockQuantity) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.stockQuantity = stockQuantity;
+    }
+
+    public void deactivate() {
+        this.active = false;
+    }
+
     public Long getId() {
         return id;
     }
