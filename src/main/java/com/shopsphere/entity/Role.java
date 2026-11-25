@@ -15,6 +15,10 @@ public class Role {
 
     protected Role(){}
 
+    public Role(String name){
+        this.name = name;
+    }
+
     public Long getId() {
         return id;
     }
