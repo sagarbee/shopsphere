@@ -9,6 +9,9 @@ import java.time.LocalDateTime;
 @Table(name = "products")
 public class Product {
 
+    protected Product(){
+
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
